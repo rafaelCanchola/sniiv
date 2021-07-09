@@ -32,11 +32,11 @@ export const MostrarCifras = props => (
     <div>
         <h3>{props.titulo}</h3>
         <span onClick={() => {props.modoCallback(1);dc.filterAll(props.dashboard);}}>
-            <h1 style={{textAlign:'center'}}><ChartTemplate chartFunction={numberDisplayAcciones}title="Acciones" isButton={true} /></h1>
+            <ChartTemplate chartFunction={numberDisplayAcciones}title="Acciones" isButton={true} />
         </span>
 
         <span onClick={() => {props.modoCallback(0);dc.filterAll(props.dashboard)}}>
-            <h3 style={{textAlign:'center'}}><ChartTemplate chartFunction={numberDisplayMontos}title="Montos" isButton={true} /></h3>
+            <ChartTemplate chartFunction={numberDisplayMontos}title="Montos" isButton={true} />
         </span>
     </div>
 )

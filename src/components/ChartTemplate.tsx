@@ -19,10 +19,11 @@ export const ChartTemplate = props => {
 
     return (
         <div>
-            <h3>{props.title}</h3>
-            <div ref={div} >
-
-            </div>
+            <h4>{props.title}</h4>
+            {props.isButton?
+                <div ref={div} ></div>:
+                <div ref={div} style={{fontSize:10}} ></div>
+            }
         </div>
 
     );

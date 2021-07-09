@@ -13,7 +13,6 @@ const barFunc = (divRef, ndx, modoValue, dashboard, valueAxis, dimensionAxis, gr
     const groupChart = dimensionChart.group().reduceSum(d => (modoValue === 0)? d.monto : d[groupAxis]);
 
     verticalBarChart
-        .minWidth(600)
         .dimension(dimensionChart)
         .group(groupChart)
         .elasticX(true)
@@ -23,7 +22,7 @@ const barFunc = (divRef, ndx, modoValue, dashboard, valueAxis, dimensionAxis, gr
         .title(d => '')
         .ordinalColors(baseColor)
 
-    verticalBarChart.xAxis().tickFormat(d3.format('s'))
+    verticalBarChart.xAxis().tickFormat(d3.format('~s'))
     return verticalBarChart
 }
 //@ts-ignore

@@ -12,7 +12,6 @@ const quarterChartFunc = (divRef, ndx, modoValue,dashboard, valueAxis, dimension
     const group = dimension.group().reduceSum(d => (modoValue === 0)? d.monto : d[groupAxis])
     const quarterChart = dc.pieChart(divRef,dashboard);
     quarterChart
-        .minWidth(500)
         .innerRadius(50)
         .dimension(dimension)
         .group(group)
