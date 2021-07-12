@@ -1,7 +1,7 @@
 import React from "react";
 import * as dc from "dc";
 import { timeYear, schemeRdYlGn, scaleLinear } from "d3";
-import { numberFormat } from "../Inicio/Graficas/CxDContext";
+import { numberFormat } from "../Graficas/CxDContext";
 import { ChartTemplate } from "../ChartTemplate";
 
 // @ts-ignore

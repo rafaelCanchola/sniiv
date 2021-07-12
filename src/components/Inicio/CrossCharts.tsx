@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import { PieChart } from "./Graficas/PieChart";
-import {RowChart} from "./Graficas/RowChart";
-import {MostrarCifras} from "./Graficas/Cifras";
-import {DataContext} from './Graficas/CxDContext';
+import { PieChart } from "../Graficas/PieChart";
+import {RowChart} from "../Graficas/RowChart";
+import {MostrarCifras} from "../Graficas/Cifras";
+import {DataContext} from '../Graficas/CxDContext';
 import * as dc from "dc";
 
 import {makeStyles,createStyles,Theme} from "@material-ui/core/styles";
@@ -43,7 +43,6 @@ export default function CrossCharts(props){
                                 <Grid item xs={12} >
                                     <Paper elevation={3} className={classes.paper}>
                                         <h1>{props.title}</h1>
-                                        <h3>Periodo</h3>
                                         <h5>del 30 de abril de 2021</h5>
                                         <AutorenewIcon fontSize={'large'} onClick={() => {
                                             setReiniciarS(!reiniciarS);
