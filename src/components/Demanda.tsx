@@ -19,12 +19,12 @@ export default function Oferta(){
                 <Tab label={"Financiamientos"}/>
             </Tabs>
             {(value === 0)?
-                <Subisidios data={demandaSubsidios} seccion={'ofertaInventario'} title={'Inventario de Vivienda'}
+                <Subisidios data={demandaSubsidios} seccion={'ofertaInventario'} title={'Subsidios CONAVI'}
                              titleCifras={'subsidios'} titlePie={'Genero'} titlePie2={'Edad'}
                              titleRow1={'Programa presupuestal'} titleRow2={'Salario'} aAxis={'programa_presupuestal'}
                              bAxis={'monto'} cAxis={'acciones'} dAxis={'estado'} eAxis={'genero'} fAxis={'rango_edad'}
                              gAxis={'rango_salarial'}/> :
-                <Financiamientos data={demandaFinanciamientos} seccion={'ofertaInventario'} title={'Inventario de Vivienda'}
+                <Financiamientos data={demandaFinanciamientos} seccion={'ofertaInventario'} title={'Financiamientos'}
                             titleCifras={'subsidios'} titlePie={'Genero'} titlePie2={'Edad'}
                             titleRow1={'Programa presupuestal'} titleRow2={'Salario'} aAxis={'organismo'}
                             bAxis={'monto'} cAxis={'acciones'} dAxis={'estado'} eAxis={'genero'} fAxis={'rango_edad'}
