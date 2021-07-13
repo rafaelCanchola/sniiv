@@ -30,7 +30,7 @@ export default function Home(){
         setValue(newValue)
     }
     return(
-        <Paper className={classes.root}>
+        <div>
             <Tabs value={value} onChange={handleChange} indicatorColor={"primary"} textColor={"primary"} centered>
                 <Tab label={"Subsidios y Financiamientos"}></Tab>
                 <Tab label={"Vivienda"}/>
@@ -48,6 +48,6 @@ export default function Home(){
                     <AccionesCharts data={pcu} seccion={'registro'}  title={'Registro de Vivienda'} titleCifras={'viviendas registradas'} titlePie={'PCU'} titleRow={'Segmento VSM'} group={'segmento'} dimensionAxis={'pcu'} groupAxis={'viviendas'} />
                 }
             <br/><br/><br/>
-        </Paper>
+        </div>
     )
 }

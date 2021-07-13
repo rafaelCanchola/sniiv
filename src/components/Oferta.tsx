@@ -28,7 +28,7 @@ export default function Oferta(){
     }
 
     return (
-        <Paper className={classes.root}>
+        <div>
             <Tabs value={value} onChange={handleChange} indicatorColor={"primary"} textColor={"primary"} centered>
                 <Tab label={"Inventario de Vivienda"}></Tab>
                 <Tab label={"Registro de Vivienda"}/>
@@ -38,7 +38,7 @@ export default function Oferta(){
                 <RegistroVivienda data={ofertaRegistro} seccion={'ofertaRegistro'}  title={'Registro de Vivienda'} titleCifras={'viviendas'} titlePie={'Tipo de vivienda'} titleRow1={'PCU'} titleRow2={'Segmento UMA'} aAxis={'tipo_vivienda'} bAxis={'pcu'} cAxis={'viviendas'} dAxis={'estado'} eAxis={'segmento'} fAxis={'segmento_uma'} />
             }
             <br/><br/><br/>
-        </Paper>
+        </div>
 
 )
 }
