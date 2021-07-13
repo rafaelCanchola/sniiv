@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme:Theme) =>
 );
 
 // @ts-ignore
-export default function Vivienda(props){
+export default function RegistroVivienda(props){
     const [modo,setModo] = useState(1);
     const [reiniciarS, setReiniciarS] = useState(false);
     const classes = useStyles();
