@@ -62,7 +62,7 @@ function App() {
       <div>
           {Routes.map((prop,key) => {
               return(
-                  <Route path={prop.path} exact={prop.exact} component={prop.component}/>
+                  <Route path={prop.path} exact={prop.exact} component={prop.component} key={key}/>
               )
           })}
           <AppBar position="fixed" style={{top: "auto", bottom: 0}} className={classes.appBar}>

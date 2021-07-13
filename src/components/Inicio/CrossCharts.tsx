@@ -2,13 +2,12 @@ import React, {useState} from 'react';
 import { PieChart } from "../Graficas/PieChart";
 import {RowChart} from "../Graficas/RowChart";
 import {MostrarCifras} from "../Graficas/Cifras";
-import {DataContext} from '../Graficas/CxDContext';
+import {DataContext} from '../Graficas/Context/CxDContext';
 import * as dc from "dc";
 
 import {makeStyles,createStyles,Theme} from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import {Container} from "@material-ui/core";
 import AutorenewIcon from "@material-ui/icons/Autorenew";
 import TuneIcon from "@material-ui/icons/Tune";
 
@@ -53,7 +52,7 @@ export default function CrossCharts(props){
                                 </Grid>
 
                             </Grid>
-                            <Grid container spacing={3} alignItems={'center'}>
+                            <Grid container spacing={2} alignItems={'center'}>
                                 <Grid item xs={12} sm={4} >
                                     <Paper elevation={3} className={classes.paper}>
                                         <MostrarCifras modoCallback={handleCallback} modoValue={modo} titulo={'Total de '+props.titleCifras} dashboard={props.seccion}/>

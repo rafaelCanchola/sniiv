@@ -1,6 +1,6 @@
 import React from "react";
 import * as dc from "dc";
-import { ChartTemplate } from "../ChartTemplate";
+import { ChartTemplate } from "../Templates/ChartTemplate";
 import * as d3 from "d3";
 import {baseColor} from "../BaseColor";
 

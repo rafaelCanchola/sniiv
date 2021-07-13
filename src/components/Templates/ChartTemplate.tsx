@@ -1,5 +1,5 @@
 import React from "react";
-import { CxDContext } from "./Graficas/CxDContext";
+import { CxDContext } from "../Graficas/Context/CxDContext";
 
 // @ts-ignore
 export const ChartTemplate = props => {

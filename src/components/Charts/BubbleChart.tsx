@@ -1,8 +1,8 @@
 import React from "react";
 import * as dc from "dc";
 import { timeYear, schemeRdYlGn, scaleLinear } from "d3";
-import { numberFormat } from "../Graficas/CxDContext";
-import { ChartTemplate } from "../ChartTemplate";
+import { numberFormat } from "../Graficas/Context/CxDContext";
+import { ChartTemplate } from "../Templates/ChartTemplate";
 
 // @ts-ignore
 const groupAddReducer =(p,v)=>{

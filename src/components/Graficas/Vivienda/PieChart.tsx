@@ -1,16 +1,16 @@
 import React from "react";
 import * as dc from "dc";
-import { ChartTemplate } from "../Templates/ChartTemplate";
+import { ChartTemplate } from "../../Templates/ChartViviendaTemplate";
 import * as d3 from "d3";
-import {baseColor} from "../BaseColor";
+import {baseColor} from "../../BaseColor";
 
 //@ts-ignore
-const quarterChartFunc = (divRef, ndx, modoValue,dashboard) => {
+const quarterChartFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis, dAxis, eAxis) => {
     //@ts-ignore
-    const  dimension = ndx.dimension(d => d.modalidad);
+    const  dimension = ndx.dimension(d => d[aAxis]);
     //@ts-ignore
-    const group = dimension.group().reduceSum(d => (modoValue === 0)? d.monto : d.acciones)
-    const quarterChart = dc.pieChart(divRef,dashboard);
+    const group = dimension.group().reduceSum(d => (modoValue === 0)? d.monto : d[cAxis])
+    const quarterChart = dc.pieChart(divRef,seccion);
     quarterChart
         .innerRadius(50)
         .dimension(dimension)
@@ -24,6 +24,6 @@ const quarterChartFunc = (divRef, ndx, modoValue,dashboard) => {
 }
 //@ts-ignore
 
-export const QuarterChart = props => (
+export const PieChart = props => (
     <ChartTemplate chartFunction={quarterChartFunc} title={props.titulo} modoValue={props.modoValue}/>
 )

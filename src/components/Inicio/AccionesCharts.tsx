@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { PieChart } from "../Graficas/PieChart";
 import {RowChart} from "../Graficas/RowChart";
-import {DataContext} from '../Graficas/CxDContext';
+import {DataContext} from '../Graficas/Context/CxDContext';
 import * as dc from "dc";
 import {MostrarAcciones} from "../Graficas/Acciones";
 
@@ -54,7 +54,7 @@ export default function AccionesCharts(props){
                             </Paper>
                         </Grid>
                     </Grid>
-                    <Grid container spacing={3} alignItems={'center'}>
+                    <Grid container spacing={2} alignItems={'center'}>
                         <Grid item xs={12} sm={4} >
                             <Paper elevation={3} className={classes.paper}>
                                 <MostrarAcciones modoCallback={handleCallback} modoValue={modo} titulo={'Total de '+props.titleCifras} dashboard={props.seccion}/>

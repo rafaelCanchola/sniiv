@@ -1,16 +1,16 @@
 import React from "react";
 import * as dc from "dc";
 import * as d3 from "d3";
-import { ChartTemplate } from "../Templates/ChartTemplate";
-import {baseColor} from "../BaseColor";
+import { ChartTemplate } from "../../Templates/ChartViviendaTemplate";
+import {baseColor} from "../../BaseColor";
 
 //@ts-ignore
-const barFunc = (divRef, ndx, modoValue, dashboard, valueAxis, dimensionAxis, groupAxis) => {
-    const verticalBarChart = dc.rowChart(divRef,dashboard)
+const barFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis, dAxis, eAxis, fAxis) => {
     //@ts-ignore
-    const dimensionChart = ndx.dimension( d => d[valueAxis]);
+    const dimensionChart = ndx.dimension( d => d[fAxis]);
     //@ts-ignore
-    const groupChart = dimensionChart.group().reduceSum(d => (modoValue === 0)? d.monto : d[groupAxis]);
+    const groupChart = dimensionChart.group().reduceSum(d => (modoValue === 0)? d.monto : d[cAxis]);
+    const verticalBarChart = dc.rowChart(divRef,seccion)
 
     verticalBarChart
         .dimension(dimensionChart)
@@ -26,7 +26,7 @@ const barFunc = (divRef, ndx, modoValue, dashboard, valueAxis, dimensionAxis, gr
     return verticalBarChart
 }
 //@ts-ignore
-export const RowChart = props => (
+export const RowChart2 = props => (
     <ChartTemplate chartFunction={barFunc} title={props.titulo} modoValue={props.modoValue}/>
 )
 

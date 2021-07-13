@@ -15,6 +15,7 @@ export default function Home(){
             <CrossCharts data={financiamientos} seccion={'financiamientos'}  title={'Financiamientos'} titleCifras={'financiamientos'} titlePie={'Modalidad'} titleRow={'Organismo'} group={'organismo'} dimensionAxis={'modalidad'} groupAxis={'acciones'} />
             <AccionesCharts data={inventario} seccion={'inventario'}  title={'Inventario de Vivienda'} titleCifras={'viviendas vigentes'} titlePie={'Segmento'} titleRow={'Avance de obra'} group={'avance_obra'} dimensionAxis={'segmento'} groupAxis={'viviendas'} />
             <AccionesCharts data={pcu} seccion={'registro'}  title={'Registro de Vivienda'} titleCifras={'viviendas registradas'} titlePie={'PCU'} titleRow={'Segmento VSM'} group={'segmento'} dimensionAxis={'pcu'} groupAxis={'viviendas'} />
+        <br/><br/><br/>
         </div>
     )
 }

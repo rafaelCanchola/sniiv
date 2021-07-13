@@ -1,10 +1,10 @@
 import React from "react";
 import * as dc from "dc";
 import * as d3 from "d3";
-import { ChartTemplate } from "../Templates/ChartTemplate";
+import { ChartTemplate } from "../../Templates/ChartViviendaTemplate";
 
 //@ts-ignore
-const numberDisplayAcciones = (divRef, ndx, modoValue,seccion,aAxis, bAxis, cAxis) => {
+const numberDisplayAcciones = (divRef, ndx, modoValue,seccion,aAxis, bAxis, cAxis, dAxis, eAxis, fAxis) => {
     //@ts-ignore
     const dimension = ndx.groupAll().reduceSum(d => d[cAxis]);
     const textFilter = dc.numberDisplay(divRef,seccion)
