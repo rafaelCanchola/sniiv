@@ -1,5 +1,7 @@
 export const baseColor = [
-    "#3E808E",
+    "#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9","#bc80bd","#ccebc5","#ffed6f"
+
+    /*"#3E808E",
     "#8AA07C",
     "#C17B36",
     "#7C6574",
@@ -8,7 +10,7 @@ export const baseColor = [
     "#4A6081",
     "#63495B",
     "#48C338",
-    "#A5A358",
+    "#A5A358",*/
     /*
     "#447c69",
     "#74c493",

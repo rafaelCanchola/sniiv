@@ -22,7 +22,7 @@ const choropletChartFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis,
         .dimension(dimension)
         .group(group)
         //@ts-ignore
-        .colors(colorBrewer.Blues[10])
+        .colors(colorBrewer.BuGn[10])
         .colorDomain([min,max])
         //@ts-ignore
         .colorCalculator(d => d? choropletChart.colors()(d) :'#ccc')

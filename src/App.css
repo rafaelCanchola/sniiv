@@ -12,3 +12,9 @@ code {
   border-color: #1861ac;
 }
 
+.dc-chart .axis.x .tick text{
+  text-anchor: end;
+  transform: rotate(-60deg) translate(-9px,-10px);
+}
+
+

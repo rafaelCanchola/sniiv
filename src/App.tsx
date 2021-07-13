@@ -47,9 +47,9 @@ const useStyles = makeStyles((theme:Theme) =>
         appBar:{
             padding: theme.spacing(0),
             textAlign:"center",
-            backgroundColor: alpha(theme.palette.primary.light,0.8),
+            backgroundColor: alpha(theme.palette.primary.light,0.6),
 
-        },
+        }
     })
 );
 
@@ -69,7 +69,7 @@ function App() {
               <BottomNavigation value={value} onChange={handleChange}  className={classes.appBar}>
                   {Routes.map((prop,key) => {
                       return(
-                          <BottomNavigationAction component={Link} to={prop.path} label={prop.sidebarName} value={prop.sidebarName} key={key} icon={prop.icon}  />
+                          <BottomNavigationAction component={Link} to={prop.path} label={prop.sidebarName} value={prop.sidebarName} key={key} icon={prop.icon}   />
                       )
                   })}
               </BottomNavigation>

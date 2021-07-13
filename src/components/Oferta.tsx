@@ -2,26 +2,11 @@ import Vivienda from "./Oferta/Vivienda";
 import React from "react";
 import {ofertaInventario} from "../json/ofertaInventario";
 import {ofertaRegistro} from "../json/ofertaRegistro";
-import {Paper, Tab, Tabs} from "@material-ui/core";
-import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import {Tab, Tabs} from "@material-ui/core";
 import RegistroVivienda from "./Oferta/RegistroVivienda";
 
-const useStyles = makeStyles((theme:Theme) =>
-    createStyles({
-        root:{
-            margin: theme.spacing(2),
-        },
-        paper:{
-            padding: theme.spacing(2),
-            textAlign:"center",
-            color: theme.palette.text.secondary,
-            backgroundColor: theme.palette.background.default
-        },
-    })
-);
 
 export default function Oferta(){
-    const classes = useStyles();
     const [value,setValue] = React.useState(0);
     const handleChange = (event: React.ChangeEvent<{}>,newValue:number) => {
         setValue(newValue)
