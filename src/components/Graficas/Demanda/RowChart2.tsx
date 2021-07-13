@@ -1,15 +1,15 @@
 import React from "react";
 import * as dc from "dc";
 import * as d3 from "d3";
-import { ChartTemplate } from "../../Templates/ChartViviendaTemplate";
+import { ChartTemplate } from "../../Templates/ChartDemandaTemplate";
 import {baseColor} from "../../BaseColor";
 
 //@ts-ignore
-const barFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis, dAxis, eAxis) => {
+const barFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis, dAxis, eAxis, fAxis,gAxis) => {
     //@ts-ignore
-    const dimensionChart = ndx.dimension( d => d[bAxis]);
+    const dimensionChart = ndx.dimension( d => d[gAxis]);
     //@ts-ignore
-    const groupChart = dimensionChart.group().reduceSum(d => d[cAxis]);
+    const groupChart = dimensionChart.group().reduceSum(d => (modoValue === 0)? d[bAxis] : d[cAxis]);
     const verticalBarChart = dc.rowChart(divRef,seccion)
 
     verticalBarChart
@@ -26,7 +26,7 @@ const barFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis, dAxis, eAx
     return verticalBarChart
 }
 //@ts-ignore
-export const RowChart = props => (
+export const RowChart2 = props => (
     <ChartTemplate chartFunction={barFunc} title={props.titulo} modoValue={props.modoValue}/>
 )
 
