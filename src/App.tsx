@@ -3,6 +3,7 @@ import './App.css';
 import {Link,withRouter,Route} from 'react-router-dom';
 import Home from "./components/Home";
 import Oferta from "./components/Oferta";
+import Demanda from "./components/Demanda";
 import {BrowserRouter} from "react-router-dom";
 import {BottomNavigation, BottomNavigationAction, AppBar, alpha} from "@material-ui/core";
 import HomeIcon from '@material-ui/icons/HomeOutlined'
@@ -29,7 +30,7 @@ const Routes=[
         path:'/demanda',
         sidebarName:'Demanda',
         icon:<BarChartIcon fontSize={'large'}/>,
-        component:Oferta,
+        component:Demanda,
         exact:false
     },
 ];
