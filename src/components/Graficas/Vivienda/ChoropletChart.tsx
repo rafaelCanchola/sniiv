@@ -18,6 +18,7 @@ const choropletChartFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis,
     const max = Math.max.apply(null,estados.map((x: { value: any; }) => x.value))
     choropletChart
         .height(400)
+        .minWidth(400)
         .dimension(dimension)
         .group(group)
         //@ts-ignore
