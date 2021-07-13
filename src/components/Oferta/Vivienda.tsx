@@ -70,17 +70,17 @@ export default function Vivienda(props){
                                 <BarChart modoValue={modo} titulo={'Segmento'}></BarChart>
                             </Paper>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={12}>
+                        <Grid item xs={12} sm={12} md={4}>
                             <Paper elevation={3} className={classes.paper}>
                                 <PieChart modoValue={modo} titulo={props.titlePie}/>
                             </Paper>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={12}>
+                        <Grid item xs={12} sm={12} md={4}>
                             <Paper elevation={3} className={classes.paper}>
                                 <RowChart modoValue={modo} titulo={props.titleRow1}/>
                             </Paper>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={12}>
+                        <Grid item xs={12} sm={12} md={4}>
                             <Paper elevation={3} className={classes.paper}>
                                 <RowChart2 modoValue={modo} titulo={props.titleRow2}/>
                             </Paper>
