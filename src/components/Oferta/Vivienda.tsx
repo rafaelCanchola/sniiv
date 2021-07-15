@@ -13,6 +13,7 @@ import {RowChart} from "../Graficas/Vivienda/RowChart";
 import {RowChart2} from "../Graficas/Vivienda/RowChart2";
 import {MostrarAcciones} from "../Graficas/Vivienda/Acciones";
 import {DataContext} from '../Graficas/Context/ViviendaContext';
+import {Button, FormControl, InputLabel, MenuItem, Select} from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme:Theme) =>
@@ -26,18 +27,53 @@ const useStyles = makeStyles((theme:Theme) =>
             color: theme.palette.text.secondary,
             backgroundColor: theme.palette.background.default
         },
+        formControl:{
+            minWidth:120,
+        }
     })
 );
+
+const inventarioYear = [
+    2021,2020,2019,2018,2017,2016,2015,2014
+]
+const inventarioMonth = [
+    1,2,3,4,5,6,7,8,9,10,11,12
+]
+const monthName = [
+    '',
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre',
+]
 
 // @ts-ignore
 export default function Vivienda(props){
     const [modo,setModo] = useState(1);
     const [reiniciarS, setReiniciarS] = useState(false);
+    const [inventarioRango0, setInventarioRango0] = useState(props.rangos[0]);
+    const [inventarioRango1, setInventarioRango1] = useState(props.rangos[1]);
     const classes = useStyles();
 
+    const handleYear = (event: React.ChangeEvent<{value:unknown}>) => {
+        setInventarioRango0(event.target.value as number)
+    }
+
+    const handleMonth = (event: React.ChangeEvent<{value:unknown}>) => {
+        setInventarioRango1(event.target.value as number)
+    }
     const handleCallback = (childData:any) =>{
         setModo(childData)
     }
+
     return(
         <div className={classes.root}>
             {//@ts-ignore
@@ -52,6 +88,29 @@ export default function Vivienda(props){
                                     dc.filterAll(props.seccion)
                                 }}/>
                                 <TuneIcon fontSize={'large'}/>
+                            </Paper>
+                            <Paper elevation={3} className={classes.paper}>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel id={'demo-simple-select-helper-label'}> Año</InputLabel>
+                                    <Select labelId={'demo-simple-select-helper-label'}
+                                            id={'demo-simple-select-helper'}
+                                            value={inventarioRango0}
+                                            onChange={handleYear}>
+                                        {inventarioYear.map((year,key) => <MenuItem value={year} key={key}>{year}</MenuItem>)}
+                                    </Select>
+                                </FormControl>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel id={'demo-simple-select-helper-label'}> Mes</InputLabel>
+                                    <Select labelId={'demo-simple-select-helper-label'}
+                                            id={'demo-simple-select-helper'}
+                                            value={inventarioRango1}
+                                            onChange={handleMonth}>
+                                        {inventarioMonth.map((month,key) => <MenuItem value={month} key={key}>{monthName[month]}</MenuItem>)}
+                                    </Select>
+                                </FormControl>
+                                <FormControl>
+                                    <Button variant={'contained'} color={'primary'} size={'large'} onClick={() => props.callBack([inventarioRango0,inventarioRango1])}>Actualizar</Button>
+                                </FormControl>
                             </Paper>
                         </Grid>
                     </Grid>

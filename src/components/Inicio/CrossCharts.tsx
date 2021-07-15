@@ -52,7 +52,7 @@ export default function CrossCharts(props){
                                 <Grid item xs={12} >
                                     <Paper elevation={3} className={classes.paper}>
                                         <h1>{props.title}</h1>
-                                        <h5>del 30 de abril de 2021</h5>
+                                        <h5>{props.periodo}</h5>
                                         <AutorenewIcon fontSize={'large'} onClick={() => {
                                             setReiniciarS(!reiniciarS);
                                             dc.filterAll(props.seccion)

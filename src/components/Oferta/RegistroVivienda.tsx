@@ -14,6 +14,7 @@ import AutorenewIcon from '@material-ui/icons/Autorenew';
 import TuneIcon from '@material-ui/icons/Tune';
 import {ChoropletChart} from "../Graficas/Vivienda/ChoropletChart";
 import {BarChart} from "../Graficas/Vivienda/BarChart";
+import {Button, FormControl, InputLabel, MenuItem, Select} from "@material-ui/core";
 
 const useStyles = makeStyles((theme:Theme) =>
     createStyles({
@@ -26,18 +27,35 @@ const useStyles = makeStyles((theme:Theme) =>
             color: theme.palette.text.secondary,
             backgroundColor: theme.palette.background.default
         },
+        formControl:{
+            minWidth:120,
+        }
     })
 );
+
+const inventarioYear = [
+    2021,2020,2019,2018,2017,2016,2015,2014
+]
 
 // @ts-ignore
 export default function RegistroVivienda(props){
     const [modo,setModo] = useState(1);
     const [reiniciarS, setReiniciarS] = useState(false);
+    const [rango0, setRango0] = useState(props.rangos[0]);
+    const [rango1, setRango1] = useState(props.rangos[1]);
+
     const classes = useStyles();
 
     const handleCallback = (childData:any) =>{
         setModo(childData)
     }
+    const handleYearIni = (event: React.ChangeEvent<{value:unknown}>) => {
+        setRango0(event.target.value as number)
+    }
+    const handleYearFin = (event: React.ChangeEvent<{value:unknown}>) => {
+        setRango1(event.target.value as number)
+    }
+
     return(
         <div className={classes.root}>
             {//@ts-ignore
@@ -52,6 +70,31 @@ export default function RegistroVivienda(props){
                                     dc.filterAll(props.seccion)
                                 }}/>
                                 <TuneIcon fontSize={'large'}/>
+                            </Paper>
+                            <Paper elevation={3} className={classes.paper}>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel id={'demo-simple-select-helper-label'}>Año Inicio</InputLabel>
+                                    <Select labelId={'demo-simple-select-helper-label'}
+                                            id={'demo-simple-select-helper'}
+                                            value={rango0}
+                                            onChange={handleYearIni}>
+                                        {inventarioYear.map((year,key) => <MenuItem value={year} key={key}>{year}</MenuItem>)}
+                                    </Select>
+                                </FormControl>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel id={'demo-simple-select-helper-label'}>Año Fin</InputLabel>
+                                    <Select labelId={'demo-simple-select-helper-label'}
+                                            id={'demo-simple-select-helper'}
+                                            value={rango1}
+                                            onChange={handleYearFin}>
+                                        {inventarioYear.map((year,key) => <MenuItem value={year} key={key}>{year}</MenuItem>)}
+                                    </Select>
+                                </FormControl>
+                                <FormControl>
+                                    <Button variant={'contained'} color={'primary'} size={'large'} onClick={() => props.callBack(
+                                        (rango0 <= rango1)?[rango0,rango1]:[rango1,rango0]
+                                    )}>Actualizar</Button>
+                                </FormControl>
                             </Paper>
                         </Grid>
                     </Grid>
