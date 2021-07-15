@@ -75,7 +75,7 @@ export default function Financiamientos(props){
                         </Grid>
                         <Grid item xs={12} sm={12} md={3}>
                             <Paper elevation={3} className={classes.paper}>
-                                {<PieChart2 modoValue={modo} titulo={props.titlePie}/>}
+                                {<PieChart2 modoValue={modo} titulo={props.titlePie2}/>}
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={12} md={3}>

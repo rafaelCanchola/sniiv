@@ -35,7 +35,6 @@ export default function Subisidios(props){
     const [modo,setModo] = useState(1);
     const [reiniciarS, setReiniciarS] = useState(false);
     const classes = useStyles();
-
     const handleCallback = (childData:any) =>{
         setModo(childData)
     }
@@ -77,7 +76,7 @@ export default function Subisidios(props){
                         </Grid>
                         <Grid item xs={12} sm={12} md={4}>
                             <Paper elevation={3} className={classes.paper}>
-                                {<PieChart2 modoValue={modo} titulo={props.titlePie}/>}
+                                {<PieChart2 modoValue={modo} titulo={props.titlePie2}/>}
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={12} md={4}>

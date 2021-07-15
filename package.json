@@ -1,6 +1,7 @@
 {
   "name": "sniiv",
   "version": "0.1.0",
+  "proxy": "https://sniiv.conavi.gob.mx",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.1",
