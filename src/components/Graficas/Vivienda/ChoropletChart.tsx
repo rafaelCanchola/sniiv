@@ -7,7 +7,7 @@ import {colorBrewer} from "../../colorBrewer";
 
 //toma como parametros el cAxis y dAxis
 //@ts-ignore
-const choropletChartFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis, dAxis, eAxis, fAxis) => {
+const choropletChartFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis, dAxis, eAxis, fAxis,map) => {
     //@ts-ignore
     const  dimension = ndx.dimension(d => d[dAxis]);
     //@ts-ignore
@@ -26,7 +26,7 @@ const choropletChartFunc = (divRef, ndx, modoValue,seccion, aAxis, bAxis, cAxis,
         .colorDomain([min,max])
         //@ts-ignore
         .colorCalculator(d => d? choropletChart.colors()(d) :'#ccc')
-        .overlayGeoJson(geoJson.features,'name',d=>d.properties.name)
+        .overlayGeoJson(map.features,'name',d=>d.properties.name)
         //@ts-ignore
         .projection(d3.geoAlbers().rotate([98, 19, 5]).scale(1200))
         .title(d=> d.key + ': '+d3.format(',.0f')(d.value))

@@ -59,7 +59,7 @@ export default function RegistroVivienda(props){
     return(
         <div className={classes.root}>
             {//@ts-ignore
-                <DataContext seccion={props.seccion} data={props.data} aAxis={props.aAxis} bAxis={props.bAxis} cAxis={props.cAxis} dAxis={props.dAxis} eAxis={props.eAxis} fAxis={props.fAxis}>
+                <DataContext seccion={props.seccion} data={props.data} aAxis={props.aAxis} bAxis={props.bAxis} cAxis={props.cAxis} dAxis={props.dAxis} eAxis={props.eAxis} fAxis={props.fAxis} map={props.map}>
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <Paper elevation={3} className={classes.paper}>

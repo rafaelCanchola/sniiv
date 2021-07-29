@@ -1,0 +1,1 @@
+export const totalDiasInventario = {"clave_entidad_federativa":"00","clave_municipio":"","construccion":287,"entidad":"Nacional","municipio":"","numero_vivienda":35184,"registro":137,"total":542,"venta":98}

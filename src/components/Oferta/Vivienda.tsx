@@ -77,7 +77,7 @@ export default function Vivienda(props){
     return(
         <div className={classes.root}>
             {//@ts-ignore
-                <DataContext seccion={props.seccion} data={props.data} aAxis={props.aAxis} bAxis={props.bAxis} cAxis={props.cAxis} dAxis={props.dAxis} eAxis={props.eAxis} fAxis={props.fAxis}>
+                <DataContext seccion={props.seccion} data={props.data} aAxis={props.aAxis} bAxis={props.bAxis} cAxis={props.cAxis} dAxis={props.dAxis} eAxis={props.eAxis} fAxis={props.fAxis} map={props.map}>
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <Paper elevation={3} className={classes.paper}>
@@ -117,7 +117,7 @@ export default function Vivienda(props){
                     <Grid container spacing={2} alignItems={'center'}>
                         <Grid item xs={12} sm={12}  md={7}>
                             <Paper elevation={3} className={classes.paper}>
-                                <ChoropletChart modoValue={modo} titulo={'Estados'} />
+                                <ChoropletChart modoValue={modo} titulo={'Estados'}/>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={12} md={5} >
@@ -125,7 +125,7 @@ export default function Vivienda(props){
                                 <MostrarAcciones modoCallback={handleCallback} modoValue={modo} titulo={'Total de '+props.titleCifras} dashboard={props.seccion}/>
                             </Paper>
                             <Paper elevation={3} className={classes.paper}>
-                                <BarChart modoValue={modo} titulo={'Segmento'}></BarChart>
+                                <BarChart modoValue={modo} titulo={'Segmento'}/>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={12} md={4}>

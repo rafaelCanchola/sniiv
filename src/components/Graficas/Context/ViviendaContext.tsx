@@ -38,7 +38,7 @@ export class DataContext extends React.Component {
         }
         return (
             //@ts-ignore<CxDContext.Provider value={{ndx:this.ndx,dashboard:this.props.seccion,valueAxis:this.props.group, dimensionAxis:this.props.dimensionAxis, groupAxis:this.props.groupAxis, estados:this.props.estadosAxis, segmentoAxis:this.props.segmentoAxis}}>
-            <CxDContext.Provider value={{ndx:this.ndx, seccion:this.props.seccion, aAxis:this.props.aAxis, bAxis:this.props.bAxis, cAxis:this.props.cAxis, dAxis:this.props.dAxis, eAxis:this.props.eAxis, fAxis:this.props.fAxis}}>
+            <CxDContext.Provider value={{ndx:this.ndx, seccion:this.props.seccion, aAxis:this.props.aAxis, bAxis:this.props.bAxis, cAxis:this.props.cAxis, dAxis:this.props.dAxis, eAxis:this.props.eAxis, fAxis:this.props.fAxis,map:this.props.map}}>
                 <div ref={//@ts-ignore
                             this.parent}>
                     {this.props.children}

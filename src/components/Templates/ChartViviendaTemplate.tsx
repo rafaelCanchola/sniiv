@@ -10,7 +10,7 @@ export const ChartTemplate = props => {
     const div = React.useRef(null);
     React.useEffect(() => {
         // @ts-ignore
-        const newChart = props.chartFunction(div.current, ndx, props.modoValue, context.seccion, context.aAxis, context.bAxis, context.cAxis, context.dAxis, context.eAxis, context.fAxis);
+        const newChart = props.chartFunction(div.current, ndx, props.modoValue, context.seccion, context.aAxis, context.bAxis, context.cAxis, context.dAxis, context.eAxis, context.fAxis, context.map);
         newChart.render();
 
         updateChart(newChart);

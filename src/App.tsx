@@ -4,11 +4,13 @@ import {Link,withRouter,Route} from 'react-router-dom';
 import Home from "./components/Home";
 import Oferta from "./components/Oferta";
 import Demanda from "./components/Demanda";
+import Densidad from "./components/Densidad";
 import {BrowserRouter} from "react-router-dom";
 import {BottomNavigation, BottomNavigationAction, AppBar, alpha} from "@material-ui/core";
 import HomeIcon from '@material-ui/icons/HomeOutlined'
 import ShowChartIcon from '@material-ui/icons/ShowChart'
 import BarChartIcon from '@material-ui/icons/BarChart'
+import MapIcon from '@material-ui/icons/Map';
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 
 const Routes=[
@@ -31,6 +33,13 @@ const Routes=[
         sidebarName:'Demanda',
         icon:<BarChartIcon fontSize={'large'}/>,
         component:Demanda,
+        exact:false
+    },
+    {
+        path:'/densidad',
+        sidebarName:'Densidad',
+        icon:<MapIcon fontSize={'large'}/>,
+        component:Densidad,
         exact:false
     },
 ];
