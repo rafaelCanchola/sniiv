@@ -191,7 +191,8 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
                 const dataPromises = results.map(result => result.json())
                 const finalData = await Promise.all(dataPromises)
                 let ag = finalData.map(data => data.map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'})))
-
+                console.log(ag)
+                console.log("GEO")
                 //let ag0 = finalData[0].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 //let ag1 = finalData[1].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 //let ag2 = finalData[2].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
@@ -207,6 +208,7 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
                 //@ts-ignore
                 //ag.map((geo,index) => geo.setProperties({id: agave[index].id,cvegeo:agave[index].cvegeo,dens_ha:agave[index].dens_ha}))
                 console.log(ag)
+
                 //console.log(ag0)
                 //console.log(ag1)
                 //console.log(ag2)
