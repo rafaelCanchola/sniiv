@@ -190,7 +190,10 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
                 //let ag = agave.map(geo => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 //@ts-ignore
                 //ag.map((geo,index) => geo.setProperties({id: agave[index].id,cvegeo:agave[index].cvegeo,dens_ha:agave[index].dens_ha}))
-                console.log(ag0+ag1+ag2+ag3)
+                console.log(ag0)
+                console.log(ag1)
+                console.log(ag2)
+                console.log(ag3)
                 return ag0+ag1+ag2+ag3;
             }
             isAgaveLayerOn = !isAgaveLayerOn;
