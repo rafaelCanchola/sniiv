@@ -179,8 +179,9 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
                 });
                 conteo = await conteo.json()
                 console.log(conteo)
-                
-
+                // @ts-ignore
+                let hilos = parseInt(conteo/3000) + ((conteo%3000>0)?1:0)
+                console.log(hilos)
                 const results = await Promise.all([
                     downloadPolygons({filter, pgnumber:0, pgsize,  xmin, ymin, xmax, ymax}),
                     downloadPolygons({filter, pgnumber:1, pgsize,  xmin, ymin, xmax, ymax}),
@@ -190,6 +191,7 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
 
                 const dataPromises = results.map(result => result.json())
                 const finalData = await Promise.all(dataPromises)
+
                 let ag0 = finalData[0].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 let ag1 = finalData[1].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 let ag2 = finalData[2].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
