@@ -17,6 +17,7 @@ import VectorSource from "ol/source/Vector";
 import {Fill, Stroke} from "ol/style";
 import {Select} from "ol/interaction";
 import {transformExtent} from 'ol/proj';
+import FetchURL from "../FetchURL";
 
 interface PublicMapState{
     center:any,
@@ -156,6 +157,7 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
 
         ShowAgave.prototype.handleShowAgave = function handleShowAgave () {
             const filter =0;
+            const pgsize = 3;
             const extent = this.getMap().getView().calculateExtent();
             const transform = transformExtent(extent,'EPSG:3857','EPSG:4326')
             const xmin = transform[0];
@@ -166,15 +168,21 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
             //console.log(transform)
             //@ts-ignore
             const handleSubmit = async () => {
-                const agave = await downloadPolygons({
-                    filter,
-                    xmin,
-                    ymin,
-                    xmax,
-                    ymax,
-                });
-                //@ts-ignore
-                let ag = agave.map(geo => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
+                const results = await Promise.all([
+                    downloadPolygons({filter, pgnumber:0, pgsize,  xmin, ymin, xmax, ymax}),
+                    downloadPolygons({filter, pgnumber:1, pgsize,  xmin, ymin, xmax, ymax}),
+                    downloadPolygons({filter, pgnumber:2, pgsize,  xmin, ymin, xmax, ymax}),
+                    downloadPolygons({filter, pgnumber:3, pgsize,  xmin, ymin, xmax, ymax}),
+                ])
+
+                const dataPromises = results.map(result => result.json())
+                const finalData = await Promise.all(dataPromises)
+                let ag0 = finalData[0].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
+                let ag1 = finalData[1].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
+                let ag2 = finalData[2].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
+                let ag3 = finalData[3].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
+                let ag = ag0+ag1+ag2+ag3;
+                //let ag = agave.map(geo => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 //@ts-ignore
                 ag.map((geo,index) => geo.setProperties({id: agave[index].id,cvegeo:agave[index].cvegeo,dens_ha:agave[index].dens_ha}))
                 console.log(ag)
@@ -223,12 +231,13 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
 
 
 
-async function downloadPolygons(cultivo:any) {
+function downloadPolygons(cultivo:any) {
     const local = 'http://localhost:8080/api/poligonos';
     const pruebas = 'https://sniiv-svc.herokuapp.com/api/poligonos';
 
     let route =
         pruebas +'?&filter='+cultivo.filter+
+        '&pgnumber=' + cultivo.pgnumber + '&pgsize=' + cultivo.pgsize +
         '&xmin=' + cultivo.xmin + '&xmax=' + cultivo.xmax + '&ymin=' + cultivo.ymin + '&ymax=' + cultivo.ymax;
     return fetch(route, {
         method: 'GET',
@@ -236,7 +245,6 @@ async function downloadPolygons(cultivo:any) {
             'Content-Type': 'application/json'
         },
     })
-        .then(data => data.json())
 }
 
 export default class PublicMap extends Component<any, PublicMapState> {
