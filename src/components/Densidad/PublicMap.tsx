@@ -225,10 +225,10 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
 
 async function downloadPolygons(cultivo:any) {
     const local = 'http://localhost:8080/api/poligonos';
-    const pruebas = 'http://187.191.53.158:8080/api/poligonos';
+    const pruebas = 'https://sniiv-svc.herokuapp.com/api/poligonos';
 
     let route =
-        local +'?&filter='+cultivo.filter+
+        pruebas +'?&filter='+cultivo.filter+
         '&xmin=' + cultivo.xmin + '&xmax=' + cultivo.xmax + '&ymin=' + cultivo.ymin + '&ymax=' + cultivo.ymax;
     return fetch(route, {
         method: 'GET',

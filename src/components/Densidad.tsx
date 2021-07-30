@@ -48,7 +48,7 @@ export default function Densidad(){
         setLoader(true)
         setDisabled(true)
         fetch(
-            'http://localhost:8080/api/uploadcharge',
+            'https://sniiv-svc.herokuapp.com/api/uploadcharge',
             {
                 method: 'POST',
                 body: formData,

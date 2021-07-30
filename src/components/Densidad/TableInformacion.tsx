@@ -59,8 +59,8 @@ class TableInformacion extends Component<any, any> {
 
     componentDidMount() {
         const local = 'http://localhost:8080/api/predioidentify';
-        const pruebas = 'http://187.191.53.158:8080/api/predioidentify';
-        let route = local +'?&id='+this.state.id;
+        const pruebas = 'https://sniiv-svc.herokuapp.com/api/predioidentify';
+        let route = pruebas +'?&id='+this.state.id;
         fetch(route, {
             method: 'GET',
             headers: {
