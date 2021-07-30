@@ -168,6 +168,19 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
             //console.log(transform)
             //@ts-ignore
             const handleSubmit = async () => {
+                const pruebas = 'https://sniiv-svc.herokuapp.com/api/poligonosconteo';
+                let route = pruebas +'?&filter='+filter+
+                    '&xmin=' + xmin + '&xmax=' + xmax + '&ymin=' + ymin + '&ymax=' + ymax;
+                let conteo = await fetch(route, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+                conteo = await conteo.json()
+                console.log(conteo)
+                
+
                 const results = await Promise.all([
                     downloadPolygons({filter, pgnumber:0, pgsize,  xmin, ymin, xmax, ymax}),
                     downloadPolygons({filter, pgnumber:1, pgsize,  xmin, ymin, xmax, ymax}),
