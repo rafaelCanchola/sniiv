@@ -181,12 +181,17 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
                 let ag1 = finalData[1].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 let ag2 = finalData[2].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 let ag3 = finalData[3].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
-                let ag = ag0+ag1+ag2+ag3;
+
+                ag0.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[0][index].id,cvegeo:finalData[0][index].cvegeo,dens_ha:finalData[0][index].dens_ha}))
+                ag1.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[1][index].id,cvegeo:finalData[1][index].cvegeo,dens_ha:finalData[1][index].dens_ha}))
+                ag2.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[2][index].id,cvegeo:finalData[2][index].cvegeo,dens_ha:finalData[2][index].dens_ha}))
+                ag3.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[3][index].id,cvegeo:finalData[3][index].cvegeo,dens_ha:finalData[3][index].dens_ha}))
+
                 //let ag = agave.map(geo => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 //@ts-ignore
-                ag.map((geo,index) => geo.setProperties({id: agave[index].id,cvegeo:agave[index].cvegeo,dens_ha:agave[index].dens_ha}))
-                console.log(ag)
-                return ag;
+                //ag.map((geo,index) => geo.setProperties({id: agave[index].id,cvegeo:agave[index].cvegeo,dens_ha:agave[index].dens_ha}))
+                console.log(ag0+ag1+ag2+ag3)
+                return ag0+ag1+ag2+ag3;
             }
             isAgaveLayerOn = !isAgaveLayerOn;
             if(isAgaveLayerOn){
