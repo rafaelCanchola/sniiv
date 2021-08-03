@@ -169,6 +169,7 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
             //@ts-ignore
             const handleSubmit = async () => {
                 const pruebas = 'https://sniiv-cors.herokuapp.com/http://sniiv-env.eba-yt2cdarp.us-east-2.elasticbeanstalk.com/api/poligonosconteo';
+                const local = 'http://localhost:8080/api/poligonosconteo';
                 let route = pruebas +'?&filter='+filter+
                     '&xmin=' + xmin + '&xmax=' + xmax + '&ymin=' + ymin + '&ymax=' + ymax;
                 let conteo = await fetch(route, {
@@ -188,30 +189,15 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
 
                 const dataPromises = results.map(result => result.json())
                 const finalData = await Promise.all(dataPromises)
-                let ag = finalData.map(data => data.map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'})))
-                console.log(ag)
-                console.log("GEO")
-                //let ag0 = finalData[0].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
-                //let ag1 = finalData[1].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
-                //let ag2 = finalData[2].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
-                //let ag3 = finalData[3].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
-                let ag0 = ag[0].map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any;}, index: string | number) => geo.setProperties({id: finalData[0][index].id,cvegeo:finalData[0][index].cvegeo,dens_ha:finalData[0][index].dens_ha}))
-                ag.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any;}, index: string | number) => geo.setProperties({id: finalData[0][index].id,cvegeo:finalData[0][index].cvegeo,dens_ha:finalData[0][index].dens_ha}))
-                //ag0.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[0][index].id,cvegeo:finalData[0][index].cvegeo,dens_ha:finalData[0][index].dens_ha}))
-                //ag1.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[1][index].id,cvegeo:finalData[1][index].cvegeo,dens_ha:finalData[1][index].dens_ha}))
-                //ag2.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[2][index].id,cvegeo:finalData[2][index].cvegeo,dens_ha:finalData[2][index].dens_ha}))
-                //ag3.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[3][index].id,cvegeo:finalData[3][index].cvegeo,dens_ha:finalData[3][index].dens_ha}))
-
-                //let ag = agave.map(geo => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
-                //@ts-ignore
-                //ag.map((geo,index) => geo.setProperties({id: agave[index].id,cvegeo:agave[index].cvegeo,dens_ha:agave[index].dens_ha}))
-                console.log(ag0)
-
-                //console.log(ag0)
-                //console.log(ag1)
-                //console.log(ag2)
-                //console.log(ag3)
-                return ag;
+                let ag = finalData.map(data => data.map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}) ))
+                ag.map((data,array) => data.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index:number) => geo.setProperties({id:finalData[array][index].id, cvegeo: finalData[array][index].cvegeo, dens_ha: finalData[array][index].dens_ha})  ))
+                let arrayFinal = [];
+                for(let i = 0; i < ag.length; i ++){
+                    for(let j = 0; j < ag[i].length; j++){
+                        arrayFinal.push(ag[i][j])
+                    }
+                }
+                return arrayFinal;
             }
             isAgaveLayerOn = !isAgaveLayerOn;
             if(isAgaveLayerOn){

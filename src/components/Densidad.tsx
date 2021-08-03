@@ -47,8 +47,10 @@ export default function Densidad(){
         formData.append('file', selectedFile);
         setLoader(true)
         setDisabled(true)
+        const local = 'http://localhost:8080/api/uploadcharge'
+        const pruebas = 'http://sniiv-env.eba-yt2cdarp.us-east-2.elasticbeanstalk.com/api/uploadcharge'
         fetch(
-            'http://sniiv-env.eba-yt2cdarp.us-east-2.elasticbeanstalk.com/api/uploadcharge',
+            pruebas,
             {
                 method: 'POST',
                 body: formData,
