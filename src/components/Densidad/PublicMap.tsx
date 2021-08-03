@@ -178,10 +178,8 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
                     },
                 });
                 conteo = await conteo.json()
-                console.log(conteo)
                 // @ts-ignore
                 let hilos = parseInt(conteo/pgsize) + ((conteo%pgsize>0)?1:0)
-                console.log(hilos)
                 let rows = []
                 for(var i = 0; i < hilos; i++){
                     rows.push(downloadPolygons({filter, pgnumber:i, pgsize,  xmin, ymin, xmax, ymax}))
@@ -197,7 +195,7 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
                 //let ag1 = finalData[1].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 //let ag2 = finalData[2].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 //let ag3 = finalData[3].map((geo: { the_geom: any; }) => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
-
+                let ag0 = ag[0].map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any;}, index: string | number) => geo.setProperties({id: finalData[0][index].id,cvegeo:finalData[0][index].cvegeo,dens_ha:finalData[0][index].dens_ha}))
                 ag.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any;}, index: string | number) => geo.setProperties({id: finalData[0][index].id,cvegeo:finalData[0][index].cvegeo,dens_ha:finalData[0][index].dens_ha}))
                 //ag0.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[0][index].id,cvegeo:finalData[0][index].cvegeo,dens_ha:finalData[0][index].dens_ha}))
                 //ag1.map((geo: { setProperties: (arg0: { id: any; cvegeo: any; dens_ha: any; }) => any; }, index: string | number) => geo.setProperties({id: finalData[1][index].id,cvegeo:finalData[1][index].cvegeo,dens_ha:finalData[1][index].dens_ha}))
@@ -207,7 +205,7 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
                 //let ag = agave.map(geo => new WKT().readFeature(geo.the_geom,{dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'}))
                 //@ts-ignore
                 //ag.map((geo,index) => geo.setProperties({id: agave[index].id,cvegeo:agave[index].cvegeo,dens_ha:agave[index].dens_ha}))
-                console.log(ag)
+                console.log(ag0)
 
                 //console.log(ag0)
                 //console.log(ag1)
