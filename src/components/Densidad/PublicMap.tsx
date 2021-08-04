@@ -168,7 +168,7 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
             //console.log(transform)
             //@ts-ignore
             const handleSubmit = async () => {
-                const pruebas = 'https://sniiv-cors.herokuapp.com/http://sniiv-env.eba-yt2cdarp.us-east-2.elasticbeanstalk.com/api/poligonosconteo';
+                const pruebas = 'https://sniiv-cors.herokuapp.com/http://sniivenv-env.eba-p3fj2kfp.us-east-2.elasticbeanstalk.com/api/poligonosconteo';
                 const local = 'http://localhost:8080/api/poligonosconteo';
                 let route = pruebas +'?&filter='+filter+
                     '&xmin=' + xmin + '&xmax=' + xmax + '&ymin=' + ymin + '&ymax=' + ymax;
@@ -244,7 +244,7 @@ const MostrarAgave = /*@__PURE__*/(function (Control) {
 
 function downloadPolygons(cultivo:any) {
     const local = 'http://localhost:8080/api/poligonos';
-    const pruebas = 'https://sniiv-cors.herokuapp.com/http://sniiv-env.eba-yt2cdarp.us-east-2.elasticbeanstalk.com/api/poligonos';
+    const pruebas = 'https://sniiv-cors.herokuapp.com/http://sniivenv-env.eba-p3fj2kfp.us-east-2.elasticbeanstalk.com/api/poligonos';
 
     let route =
         pruebas +'?&filter='+cultivo.filter+
